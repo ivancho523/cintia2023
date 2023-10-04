@@ -12,13 +12,17 @@ El modelo ha sido entrenado utilizando una red neuronal multicapa aprovechando l
 Para poder utilizar el modelo previamente entrenado en un microcontrolador debemos seguir los siguientes pasos:
 
 - Instalar xxd
-`!apt-get update && apt-get -qq install xxd`
+
+`apt-get update && apt-get -qq install xxd`
 
 - Convertir el modelo a un archivo C (se crea la carpeta tflite_models y se almacena el archivo en blanco model.tflite y model.cc)
+
 `xxd -i tflite_models/model.tflite > model.cc`
 
 - Guardamos el modelo en el archivo .tflite
+
 `converter = tf.lite.TFLiteConverter.from_keras_model(model)`
+
 `model_no_quant_tflite = converter.convert()`
 
 
@@ -38,6 +42,6 @@ Una vez se disponga del modelo entrenado y su conversión a un archivo C, podemo
 Para ello descargamos de la carpeta de Google Colab el archivo [modelo_bueno.cpp] y copiamos el contenido en el archivo [model.cpp] ubicado en la carpeta `src`
 
 Las librerías utilizadas en este ejemplo son:
-[DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library)
-[Adafruit_Unified_Sensor](https://github.com/adafruit/Adafruit_Sensor)
-[Arduino_TensorFlowLite_ESP32](https://github.com/tanakamasayuki/Arduino_TensorFlowLite_ESP32)
+* [DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library)
+* [Adafruit_Unified_Sensor](https://github.com/adafruit/Adafruit_Sensor)
+* [Arduino_TensorFlowLite_ESP32](https://github.com/tanakamasayuki/Arduino_TensorFlowLite_ESP32)
